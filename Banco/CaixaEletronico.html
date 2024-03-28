@@ -1,0 +1,219 @@
+<html>
+
+<head>
+
+	<script>
+
+	
+			var nome = prompt("Bem vindo!, Digite seu nome: ");
+
+			alert("Olá seja bem vindo " + nome + " é um prazer ter você por aqui!");
+
+
+
+
+		var saldo = 100.5; //Float
+		var senha = 3589;
+		var continuar = true;
+		function inicio() {
+
+			
+																	//Saldo, Extrato, Saque, Depósito, Transferência e Sair. 
+			var escolha = parseInt(prompt('Selecione uma opção 1.) Saldo 2.) Extrato 3.) Saque 4.) Depósito 5.) Transferência 6.) Sair'));
+
+			switch(escolha){
+
+				case 1: 
+				var confSenha = parseInt(prompt("Digite sua senha: "));
+				
+				while(continuar){
+				
+				if(confSenha === senha){
+				ver_saldo();
+				}else{
+					var confSenha = parseInt(prompt("SENHA INCORRETA\nTente novamente: "));
+				}
+			}
+				break;
+
+				case 2: 
+				var confSenha = parseInt(prompt("Digite sua senha: "));
+				
+				while(continuar){
+				
+				if(confSenha === senha){
+				ver_extrato();
+				}else{
+					var confSenha = parseInt(prompt("SENHA INCORRETA\nTente novamente: "));
+				}
+			}
+				break;
+
+				case 3: 
+				var confSenha = parseInt(prompt("Digite sua senha: "));
+				
+				while(continuar){
+				
+				if(confSenha === senha){
+				fazer_saque();
+				}else{
+					var confSenha = parseInt(prompt("SENHA INCORRETA\nTente novamente: "));
+				}
+			}
+				break;
+
+				case 4: 
+				var confSenha = parseInt(prompt("Digite sua senha: "));
+				
+				while(continuar){
+				
+				if(confSenha === senha){
+				fazer_deposito();
+				}else{
+					var confSenha = parseInt(prompt("SENHA INCORRETA\nTente novamente: "));
+				}
+			}
+				break;
+
+				case 5: 
+				var confSenha = parseInt(prompt("Digite sua senha: "));
+				
+				while(continuar){
+				
+				if(confSenha === senha){
+				Transferencia();
+				}else{
+					var confSenha = parseInt(prompt("SENHA INCORRETA\nTente novamente: "));
+				}
+			}
+				break;
+
+				case 6: 
+				alert(nome + ", foi um prazer ter você por aqui!")
+				sair();
+				break;
+
+				
+
+
+
+
+			}
+
+			if( escolha < 1 || escolha > 6){
+				erro();
+			}
+
+
+
+
+
+
+
+
+
+			/*if (escolha === 1) {
+				ver_saldo();
+			} else if (escolha === 2) {
+				fazer_deposito();
+			} else if (escolha === 3) {
+				fazer_saque();
+			} else if (escolha === 4) {
+				sair();
+			} else {
+				erro();
+			}*/
+		}		
+
+		function ver_saldo() {
+			alert('Seu saldo atual é: ' + saldo);
+			inicio();
+		}
+
+		function fazer_deposito() {
+			var deposito = parseFloat(prompt('Qual o valor para depósito?'));
+			// Not a Number
+			if (isNaN(deposito) || deposito === ''|| deposito <= 0) {
+				alert('Operação não autorizada\nPor favor, informe um número válido:');
+				fazer_deposito();
+			} else {
+				saldo += deposito;
+				ver_saldo();
+			}
+		}
+
+		function fazer_saque() {
+			var saque = parseFloat(prompt('Qual o valor para saque?'));
+			if (isNaN(saque) || saque === '') {
+				alert('Por favor, informe um número:');
+				fazer_saque();
+			} else if (saque > saldo || saque <= 0){
+				alert("Operação não autorizada");
+				fazer_saque();
+			}
+			
+			else {
+				saldo -= saque;
+				
+				ver_saldo();
+			}
+		}
+
+		function erro() {
+			
+			alert('Por favor, informe um número entre 1 e 6');
+			inicio();
+			
+		}
+
+		function sair() {
+			var confirma = confirm('Você deseja sair?');
+			if (confirma) {
+				window.close();
+			} else {
+				inicio();
+			}
+		}
+
+			function ver_extrato(){
+
+				alert("Compra realizada: Mercado da Vovó \nValor: R$ 40,00\n\nCompra Realizada: Doces LTDA\nValor: R$12,00\n\nCompra Realizada: Renner\nValor: R$140,00 ")
+				inicio();
+
+
+			}
+
+			function Transferencia(){
+				var numConta = parseFloat(prompt("Digite o número da conta que deseja transferir: "));
+
+				 if ( numConta === '' || isNaN(numConta) ){
+					alert("Operação não autorizada");
+					Transferencia();
+
+				} else {
+					
+					var transferir = parseInt(prompt("Digite o valor para a transferência:"));
+					//var resultadoTransferir  = saldo - resultadoTransferir;
+					if(transferir > saldo || transferir <=0){
+						var transferir = parseInt(prompt("Digite o valor para a transferência válido:"));
+					}else{
+					saldo -= transferir;
+					alert ("Sua transferencia foi realizada!\nValor transferido: " + transferir + "\n\nSeu saldo restante será exibido ");
+					ver_saldo();
+					}
+
+				}
+
+			}
+
+		
+		
+		inicio();
+	</script>
+</head>
+
+<body>
+
+</body>
+
+</html>
